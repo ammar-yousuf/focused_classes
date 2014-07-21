@@ -8,16 +8,21 @@ class TextCompressor
     words = text.split
     words.each do |word|
     	
-    	# Check to see if the word exists in the @unique array
-    	i = @unique.index( word )
+    	i = unique_index_of( word )
     	if i 
     		@index << i
     	else
-    		@unique << word
-    		
-    		# Tell the index array where the word is in the @unique array
-    		@index << @unique.size - 1
+    		@unique << add_unique_word( word )    		    	
     	end
     end
+  end
+
+  def unique_index_of( word )
+
+  end
+
+  def add_unique_word( word )
+    @unique << word
+    unique.size - 1
   end
 end
