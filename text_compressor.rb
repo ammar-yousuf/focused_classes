@@ -5,23 +5,28 @@ class TextCompressor
     @unique = []
     @index = []
 
+    add_text(text)
+  end
+
+  def add_text(text)
     words = text.split
-    words.each do |word|
-    	
-    	i = unique_index_of( word )
-    	if i 
-    		@index << i
-    	else
-    		@unique << add_unique_word( word )    		    	
-    	end
+    words.each { | word| add_word(word) }
+  end
+
+  def add_word(word)
+    i = unique_index_of(word)
+    if i 
+      @index << i
+    else
+      @unique << add_unique_word(word)
     end
   end
 
-  def unique_index_of( word )
-
+  def unique_index_of(word)
+    @unique.index(word)
   end
 
-  def add_unique_word( word )
+  def add_unique_word(word)
     @unique << word
     unique.size - 1
   end
