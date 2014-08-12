@@ -4,7 +4,6 @@ class TextCompressor
   def initialize( text )
     @unique = []
     @index = []
-
     add_text(text)
   end
 
@@ -14,12 +13,8 @@ class TextCompressor
   end
 
   def add_word(word)
-    i = unique_index_of(word)
-    if i 
-      @index << i
-    else
-      @unique << add_unique_word(word)
-    end
+    i = unique_index_of(word) || add_unique_word(word)
+    @index << i
   end
 
   def unique_index_of(word)
